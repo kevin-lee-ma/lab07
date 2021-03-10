@@ -9,7 +9,11 @@ package sol
 class Names (nameList: Array[String]) {
 
   def clear(name: String) {
-    //TODO: Your code should go here
+    for (i <- nameList.indices) {
+      if (nameList(i).equals(name)) {
+        nameList(i) = "CLEARED"
+      }
+    }
   }
 }
 
@@ -22,7 +26,13 @@ class Names (nameList: Array[String]) {
 class Names2 (private var nameList: List[String]) {
 
   def clear(name: String) {
-    //TODO: Your code goes here
+    def clearhelper(word: String): String = {
+      word match {
+        case `name` => "CLEARED"
+        case _ => word
+      }
+    }
+    nameList = nameList.map(x => clearhelper(x))
   }
 }
 
@@ -33,6 +43,7 @@ class Names2 (private var nameList: List[String]) {
  * @author cs18tas
  * @param nameList - a private val list of Strings
  */
+<<<<<<< Updated upstream
 
 class Names3 (private var nameList: List[String]) {
 
@@ -40,5 +51,17 @@ class Names3 (private var nameList: List[String]) {
     //TODO: For this part, we want you to come up with the clear method signature yourself!
 
   }
+=======
+class Names3 (nameList: List[String]) {
+>>>>>>> Stashed changes
 
+  def clear(name: String): Names3 = {
+    def clearhelper(word: String): String = {
+      word match {
+        case `name` => "CLEARED"
+        case _ => word
+      }
+    }
+    new Names3(nameList.map(x => clearhelper(x)))
+  }
 }
